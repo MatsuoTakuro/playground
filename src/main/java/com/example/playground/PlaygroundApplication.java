@@ -13,7 +13,7 @@ public class PlaygroundApplication {
 		a.sub();
 	}
 
-	public  void sub() {
+	void sub() {
 		int quantity =  1;
 		int unitPrice = 500;
 		int basePrice = quantity * unitPrice;
@@ -24,14 +24,12 @@ public class PlaygroundApplication {
 		System.out.println(itemPrice);
 	}
 
-	public  double takeRate()  {
+	double takeRate()  {
 		return 1.10;
 	}
 
-	public int shippingCost(int basePrice) {
-		if (basePrice < 3000) return 500;
-
-		return 0;
+	int shippingCost(int basePrice) {
+		ShippingCost cost = new ShippingCost(basePrice);
+		return cost.amount();
 	}
-
 }
