@@ -18,9 +18,7 @@ public class PlaygroundApplication {
 		int unitPrice = 500;
 		int basePrice = quantity * unitPrice;
 
-		int shippingCost = 0;
-		if(basePrice < 3000)
-			shippingCost = 500;
+		int shippingCost = shippingCost(basePrice);
 
 		double itemPrice = (basePrice + shippingCost) * takeRate();
 		System.out.println(itemPrice);
@@ -28,6 +26,12 @@ public class PlaygroundApplication {
 
 	public  double takeRate()  {
 		return 1.10;
+	}
+
+	public int shippingCost(int basePrice) {
+		if (basePrice < 3000) return 500;
+
+		return 0;
 	}
 
 }
