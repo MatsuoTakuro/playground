@@ -10,26 +10,24 @@ public class PlaygroundApplication {
 		SpringApplication.run(PlaygroundApplication.class, args);
 
 		PlaygroundApplication a = new PlaygroundApplication();
-		a.sub();
+		a.purchase(1, 500);
 	}
 
-	void sub() {
-		int quantity =  1;
-		int unitPrice = 500;
+	void purchase(int quantity, int unitPrice) {
 		int basePrice = quantity * unitPrice;
-
 		int shippingCost = shippingCost(basePrice);
 
 		double itemPrice = (basePrice + shippingCost) * takeRate();
-		System.out.println(itemPrice);
-	}
-
-	double takeRate()  {
-		return 1.10;
+		System.out.println("item price is " +  itemPrice);
 	}
 
 	int shippingCost(int basePrice) {
 		ShippingCost cost = new ShippingCost(basePrice);
 		return cost.amount();
+	}
+
+	double takeRate()  {
+		TakeRate rate = new TakeRate();
+		return rate.getTakeRate();
 	}
 }
