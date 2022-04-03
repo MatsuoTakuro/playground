@@ -29,4 +29,5 @@ public class Money {
     private int minusAmount(Money other) {
         return this.amount - other.amount;
     }
+
 }
