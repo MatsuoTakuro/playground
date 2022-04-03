@@ -11,6 +11,8 @@ public class PlaygroundApplication {
 
 		PlaygroundApplication a = new PlaygroundApplication();
 		a.purchase(1, 500);
+		a.addQuantity(10, 50);
+		a.discountPrice(1000, 500);
 	}
 
 	void purchase(int quantity, int unitPrice) {
@@ -29,5 +31,19 @@ public class PlaygroundApplication {
 	double takeRate()  {
 		TakeRate rate = new TakeRate();
 		return rate.getTakeRate();
+	}
+
+	void addQuantity(int baseValue, int additionalValue) {
+		Quantity baseQuantity = new Quantity(baseValue);
+		Quantity addedQuantity = baseQuantity.add(new Quantity(additionalValue));
+		System.out.println("baseQuantity is " + baseQuantity.value);
+		System.out.println("addedQuantity is " + addedQuantity.value);
+	}
+
+	void discountPrice(int baseAmount, int discountAmount) {
+		Money basePrice = new Money(baseAmount);
+		Money discounted = basePrice.minus(discountAmount);
+		System.out.println("basePrice is " + basePrice.amount);
+		System.out.println("discounted is " + discounted.amount);
 	}
 }

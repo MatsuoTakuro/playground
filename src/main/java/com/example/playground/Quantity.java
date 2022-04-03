@@ -22,8 +22,8 @@ public class Quantity {
     }
 
     boolean canAdd(Quantity other) {
-        int added = addValue(other);
-        return added <= MAX;
+        int total = addValue(other);
+        return total <= MAX;
     }
 
     private int addValue(Quantity other) {
