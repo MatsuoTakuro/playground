@@ -49,8 +49,10 @@ public class PlaygroundApplication {
 	}
 
 	void logic() {
-		Customer customer = new Customer(CustomerType.CHILD);
-		System.out.println("fee for this customer is " + customer.fee());
+		Customer customer = new Customer();
+		System.out.println("fee for this customer is " + customer.fee().amount);
+		Customer child = new Customer(CustomerType.CHILD);
+		System.out.println("fee for this customer is " + child.fee().amount);
 	}
 
 }
