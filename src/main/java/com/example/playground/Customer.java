@@ -3,15 +3,15 @@ package com.example.playground;
 public class Customer {
 
     CustomerType customerType;
-    Customer() {
-        this.customerType = CustomerType.ADULT;
-    }
+    Customer() { this.customerType = CustomerType.ADULT; }
 
     Customer(CustomerType customerType) {
         this.customerType = customerType;
     }
 
-     Boolean isChild() {
+    Boolean isBaby() { return this.customerType == CustomerType.BABY; }
+
+    Boolean isChild() {
         return this.customerType == CustomerType.CHILD;
     }
 
@@ -19,12 +19,29 @@ public class Customer {
         return this.customerType == CustomerType.ADULT;
     }
 
-//  TODO: This method should be defined independently in Fee class, from Customer class
-    double fee() {
-        int baseFee = 1000;
-        if (isChild()) {
-            return  baseFee * 0.5;
-        }
-        return  baseFee;
+    Boolean isSenior() {
+        return this.customerType == CustomerType.SENIOR;
     }
+
+    Money fee() {
+        if (isBaby()) return babyFee();
+        if (isChild()) return childFee();
+        if (isSenior()) return seniorFee();
+        return adultFee();
+    }
+
+    Money babyFee() {
+        return new Fee().babyFee();
+    }
+
+    Money childFee() {
+        return new Fee().childFee();
+    }
+
+    Money adultFee() { return new Fee().adultFee(); }
+
+    Money seniorFee() {
+        return new Fee().seniorFee();
+    }
+
 }

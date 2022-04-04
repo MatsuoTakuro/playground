@@ -1,12 +1,10 @@
 package com.example.playground;
 
 public class TakeRate {
-    static final double TAKERATE = 0.3;
+    static final double TAKE_RATE = 0.3;
 
     double takeRate;
-    TakeRate() {
-        this.takeRate = 1 - TAKERATE;
-    }
+    TakeRate() {this.takeRate = 1 - TAKE_RATE; }
 
     double getTakeRate() {
         return  this.takeRate;
