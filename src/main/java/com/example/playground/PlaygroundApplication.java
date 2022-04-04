@@ -13,6 +13,7 @@ public class PlaygroundApplication {
 		a.purchase(1, 500);
 		a.addQuantity(10, 50);
 		a.discountPrice(1000, 500);
+		a.logic();
 	}
 
 	void purchase(int quantity, int unitPrice) {
@@ -46,4 +47,10 @@ public class PlaygroundApplication {
 		System.out.println("basePrice is " + basePrice.amount);
 		System.out.println("discounted is " + discounted.amount);
 	}
+
+	void logic() {
+		Customer customer = new Customer(CustomerType.CHILD);
+		System.out.println("fee for this customer is " + customer.fee());
+	}
+
 }
