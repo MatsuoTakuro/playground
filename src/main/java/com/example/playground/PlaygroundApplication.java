@@ -1,7 +1,13 @@
 package com.example.playground;
 
+import com.example.playground.customer.Customer;
+import com.example.playground.customer.CustomerType;
+import com.example.playground.customer.Customers;
+import com.example.playground.fee.Fee;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.*;
 
 @SpringBootApplication
 public class PlaygroundApplication {
@@ -13,7 +19,7 @@ public class PlaygroundApplication {
 		a.purchase(1, 500);
 		a.addQuantity(10, 50);
 		a.discountPrice(1000, 500);
-		a.logic();
+		a.charge();
 	}
 
 	void purchase(int quantity, int unitPrice) {
@@ -48,11 +54,23 @@ public class PlaygroundApplication {
 		System.out.println("discounted is " + discounted.amount);
 	}
 
-	void logic() {
-		Customer customer = new Customer();
-		System.out.println("fee for this customer is " + customer.fee().amount);
+	void charge() {
+		Customer adult = new Customer();
+		Fee customerFee = adult.fee();
+		System.out.println("fee for this adult is " + customerFee.money().amount);
+
 		Customer child = new Customer(CustomerType.CHILD);
-		System.out.println("fee for this customer is " + child.fee().amount);
+		Fee childFee = child.fee();
+		System.out.println("fee for this child is " + child.fee().money().amount);
+
+		Customers customers = new Customers(Arrays.asList(adult, child));
+		Reservation reservation = new Reservation(customers);
+		System.out.println("the total fee is " + reservation.feeTotal().amount);
+
+		for (Fee fee: reservation.fees) {
+			Charger charger = new Charger(fee);
+			System.out.println("the subtotal amount to be charged is " + charger.money().amount);
+		}
 	}
 
 }

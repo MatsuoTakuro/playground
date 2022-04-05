@@ -4,9 +4,12 @@ public class Money {
 
     static final  int MIN = 0;
 
-    int amount;
+    public Money() {
+        this.amount = 0;
+    }
 
-    Money(int amount) {
+    int amount;
+    public Money(int amount) {
         if (amount < MIN) throw new
                 IllegalArgumentException("illegal: " + "less than " + MIN);
         this.amount = amount;
@@ -21,6 +24,12 @@ public class Money {
         return new Money(balance);
     }
 
+    Money add(int amount) {
+        Money other = new Money(amount);
+        int total = addAmount(other);
+        return new Money(total);
+    }
+
     boolean canMinus(Money other) {
         int balance = minusAmount(other);
         return  balance > MIN;
@@ -28,5 +37,9 @@ public class Money {
 
     private int minusAmount(Money other) {
         return this.amount - other.amount;
+    }
+
+    private int addAmount(Money other) {
+        return this.amount + other.amount;
     }
 }
