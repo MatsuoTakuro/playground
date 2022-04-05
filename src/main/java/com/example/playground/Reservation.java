@@ -38,12 +38,7 @@ public class Reservation {
         return new Reservation(result);
     }
 
-
     Money feeTotal() {
-        int total = 0;
-        for (Fee fee: fees) {
-            total += fee.money().amount;
-        }
-        return new Money(total);
+        return new Money().total(this.fees);
     }
 }

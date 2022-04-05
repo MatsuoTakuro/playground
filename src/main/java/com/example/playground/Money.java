@@ -1,5 +1,9 @@
 package com.example.playground;
 
+import com.example.playground.fee.Fee;
+
+import java.util.List;
+
 public class Money {
 
     static final  int MIN = 0;
@@ -28,6 +32,14 @@ public class Money {
         Money other = new Money(amount);
         int total = addAmount(other);
         return new Money(total);
+    }
+
+    Money total(List<Fee> fees) {
+        Money money = new Money();
+        for (Fee fee: fees) {
+            money = money.add(fee.money().amount);
+        }
+        return money;
     }
 
     boolean canMinus(Money other) {
