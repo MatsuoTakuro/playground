@@ -4,6 +4,7 @@ import com.example.playground.customer.Customer;
 import com.example.playground.customer.CustomerType;
 import com.example.playground.customer.Customers;
 import com.example.playground.fee.Fee;
+import com.example.playground.fee.FeeFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -71,6 +72,9 @@ public class PlaygroundApplication {
 			Charger charger = new Charger(fee);
 			System.out.println("the subtotal amount to be charged is " + charger.money().amount);
 		}
+
+		System.out.println("fee for this adult is " + FeeFactory.feeByName(CustomerType.ADULT).money().amount);
+		System.out.println("fee for this child is " + FeeFactory.feeByName(CustomerType.CHILD).money().amount);
 	}
 
 }
