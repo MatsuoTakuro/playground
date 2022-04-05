@@ -5,6 +5,7 @@ import com.example.playground.customer.CustomerType;
 import com.example.playground.customer.Customers;
 import com.example.playground.fee.Fee;
 import com.example.playground.fee.FeeFactory;
+import com.example.playground.fee.FeeType;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -21,6 +22,7 @@ public class PlaygroundApplication {
 		a.addQuantity(10, 50);
 		a.discountPrice(1000, 500);
 		a.charge();
+		a.feeType();
 	}
 
 	void purchase(int quantity, int unitPrice) {
@@ -75,6 +77,11 @@ public class PlaygroundApplication {
 
 		System.out.println("fee for this adult is " + FeeFactory.feeByName(CustomerType.ADULT).money().amount);
 		System.out.println("fee for this child is " + FeeFactory.feeByName(CustomerType.CHILD).money().amount);
+	}
+
+	void feeType() {
+		Money adultFee = FeeType.feeFor("adult");
+		System.out.println("fee for adult is " + adultFee.amount );
 	}
 
 }

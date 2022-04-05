@@ -2,13 +2,13 @@ package com.example.playground.fee;
 
 import com.example.playground.Money;
 
-public class BabyFee implements Fee{
+public class BabyFee  extends BaseFee implements Fee{
 
     static final double BABY_RATE = 0.3;
 
     @Override
     public Money money() {
-        double tmpBabyFee = BaseFee.BASE_FEE * BABY_RATE;
+        double tmpBabyFee = BASE_FEE * BABY_RATE;
         int babyFee = (int) Math.round(tmpBabyFee);
         return new Money(babyFee);
     }

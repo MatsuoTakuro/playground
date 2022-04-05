@@ -1,15 +1,28 @@
 package com.example.playground.fee;
 
+import com.example.playground.Money;
+
 public enum FeeType {
-    adult,
-    child,
-    senior
-}
+    adult( new AdultFee()),
+    child( new ChildFee()),
+    senior( new SeniorFee());
 
-class Guest {
-    FeeType type;
+    private Fee fee;
+    private FeeType(Fee fee) {
+        this.fee =fee;
+    }
 
-    boolean isAdult() {
-        return type.equals(FeeType.adult);
+    Money money() {
+        return this.fee.money();
+    }
+
+    String label() {
+        return this.fee.label();
+    }
+
+    public static Money feeFor(String feeTypeName) {
+        FeeType feeType = FeeType.valueOf(feeTypeName);
+
+        return feeType.money();
     }
 }
