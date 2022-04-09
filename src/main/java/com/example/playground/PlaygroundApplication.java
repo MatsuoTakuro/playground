@@ -11,6 +11,7 @@ public class PlaygroundApplication {
 
 		PlaygroundApplication a = new PlaygroundApplication();
 		a.stateTransitions();
+		a.dueDatePattern();
 	}
 
 	void stateTransitions() {
@@ -22,6 +23,11 @@ public class PlaygroundApplication {
 				" ? " +
 				" - "
 				+ new StateTransitions().canTransit(from, to));
+	}
+
+	void dueDatePattern() {
+		DueDate dueDate = new DueDate();
+		System.out.println("alert priority of due date is " +dueDate.alertPriority());
 	}
 
 
