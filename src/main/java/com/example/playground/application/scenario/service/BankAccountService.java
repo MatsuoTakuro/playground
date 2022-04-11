@@ -1,7 +1,7 @@
-package com.example.playground.application.service;
+package com.example.playground.application.scenario.service;
 
 import com.example.playground.domain.Amount;
-import com.example.playground.datasource.repository.BankAccountRepository;
+import com.example.playground.repository.BankAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

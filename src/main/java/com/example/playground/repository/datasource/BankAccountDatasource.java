@@ -1,10 +1,11 @@
-package com.example.playground.datasource.repository;
+package com.example.playground.repository.datasource;
 
+import com.example.playground.repository.BankAccountRepository;
 import com.example.playground.domain.Amount;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BankAccountRepository {
+public class BankAccountDatasource implements BankAccountRepository {
 
     public Amount balance() {
         int tmpBalanceInDb = 100;
