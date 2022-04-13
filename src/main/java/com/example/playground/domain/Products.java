@@ -12,4 +12,14 @@ public class Products {
     void add(Product product) {
         this.products.add(product);
     }
+
+    int count() {
+        return 10;
+    }
+
+    String found() {
+        if (count() == 0 ) return "Not found";
+
+        return String.format("%s件見つかりました。", count());
+    }
 }
