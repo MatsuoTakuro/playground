@@ -40,6 +40,10 @@ public class Main {
         SkillSet skillSet = SkillSet.of(Skill.Java, Skill.Go, Skill.SQL);
         SkillSet other = SkillSet.of(Skill.Go, Skill.Python);
         System.out.println(skillSet.hasMatch(other));
+        System.out.println(skillSet.contains(Skill.Go));
+
+        SkillSet skillSet2 = new SkillSet();
+        System.out.println(skillSet2.isEmpty());
     }
 
     static void price() {

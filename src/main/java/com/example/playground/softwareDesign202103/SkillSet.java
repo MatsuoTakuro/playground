@@ -4,15 +4,29 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class SkillSet {
-    Set<Skill> set;
+    Set<Skill> skills = new HashSet<>();
 
-    private SkillSet(Set<Skill> set) {
-        this.set = set;
+    public  SkillSet() {}
+
+    private SkillSet(Set<Skill> skills) {
+        this.skills = skills;
+    }
+
+    boolean isEmpty() {
+        return skills.isEmpty();
+    }
+
+    boolean contains(Skill skill) {
+        return skills.contains(skill);
+    }
+
+    boolean hasSkill(Skill skill) {
+        return skills.contains(skill);
     }
 
     boolean hasMatch(SkillSet other) {
-        Set<Skill> result = new HashSet<>(set);
-        result.retainAll(other.set);
+        Set<Skill> result = new HashSet<>(skills);
+        result.retainAll(other.skills);
         return result.size() > 0;
     }
 
