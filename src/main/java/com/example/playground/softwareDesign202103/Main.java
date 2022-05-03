@@ -10,6 +10,8 @@ public class Main {
         range();
         skill();
         price();
+        lines();
+        schedule();
     }
 
     static void type() {
@@ -38,5 +40,27 @@ public class Main {
         Pair pair = Pair.of(Category.GENERAL, DayType.WEEKDAY);
         Amount amount = new PriceTable().price(pair);
         System.out.println(amount.value);
+    }
+
+    static void lines() {
+        List<String> initialized = List.of("1st", "2nd");
+        MultiLineText lines = new MultiLineText(initialized);
+        List<String> add = List.of("3rd", "4th");
+        List<String> added =  lines.withLines(add);
+        System.out.println(added);
+    }
+
+    static void schedule() {
+        SortedSet<Workday> workdays = new TreeSet<Workday>();
+        Workday today = new Workday(LocalDate.now());
+        workdays.add(today);
+        Schedule schedule = new Schedule(workdays);
+        Workday tomorrow = new Workday(LocalDate.now().plusDays(1));
+        Workday dayAfterTomorrow = new Workday(LocalDate.now().plusDays(2));
+        Schedule schedule2 =  schedule.add(tomorrow);
+        Schedule schedule3 =  schedule2.add(dayAfterTomorrow);
+        schedule3.show();
+        Workdays specifiedWorkdays = new Workdays(schedule3.schedules(tomorrow));
+        specifiedWorkdays.show();
     }
 }
