@@ -15,6 +15,8 @@ public class Main {
     }
 
     static void type() {
+        System.out.println("\n" + new Object(){}.getClass().getEnclosingMethod().getName());
+
         Category general = Category.valueOf("GENERAL");
         System.out.println(general);
         Category[] categories = Category.values();
@@ -24,6 +26,8 @@ public class Main {
     }
 
     static void range() {
+        System.out.println("\n" + new Object(){}.getClass().getEnclosingMethod().getName());
+
         DateRange base = new DateRange(LocalDate.now(), LocalDate.now().plusWeeks(1));
         System.out.println(base.contains(LocalDate.now().plusDays(1)));
         DateRange other = new DateRange(LocalDate.now().plusDays(2), LocalDate.now().plusWeeks(2));
@@ -31,18 +35,24 @@ public class Main {
     }
 
     static void skill() {
+        System.out.println("\n" + new Object(){}.getClass().getEnclosingMethod().getName());
+
         SkillSet skillSet = SkillSet.of(Skill.Java, Skill.Go, Skill.SQL);
         SkillSet other = SkillSet.of(Skill.Go, Skill.Python);
         System.out.println(skillSet.hasMatch(other));
     }
 
     static void price() {
+        System.out.println("\n" + new Object(){}.getClass().getEnclosingMethod().getName());
+
         Pair pair = Pair.of(Category.GENERAL, DayType.WEEKDAY);
         Amount amount = new PriceTable().price(pair);
         System.out.println(amount.value);
     }
 
     static void lines() {
+        System.out.println("\n" + new Object(){}.getClass().getEnclosingMethod().getName());
+
         List<String> initialized = List.of("1st", "2nd");
         MultiLineText lines = new MultiLineText(initialized);
         List<String> add = List.of("3rd", "4th");
@@ -51,6 +61,8 @@ public class Main {
     }
 
     static void schedule() {
+        System.out.println("\n" + new Object(){}.getClass().getEnclosingMethod().getName());
+
         SortedSet<Workday> workdays = new TreeSet<Workday>();
         Workday today = new Workday(LocalDate.now());
         workdays.add(today);
