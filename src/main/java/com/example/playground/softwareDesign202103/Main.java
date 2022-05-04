@@ -12,6 +12,7 @@ public class Main {
         price();
         lines();
         schedule();
+        pricingCategory();
     }
 
     static void type() {
@@ -78,5 +79,17 @@ public class Main {
         schedule3.show();
         Workdays specifiedWorkdays = new Workdays(schedule3.schedules(tomorrow));
         specifiedWorkdays.show();
+    }
+
+    static void pricingCategory() {
+        System.out.println("\n" + new Object(){}.getClass().getEnclosingMethod().getName());
+
+        PricingCategory category = null;
+        try {
+            category = PricingCategory.of(LocalDate.now());
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(category.price());
     }
 }
