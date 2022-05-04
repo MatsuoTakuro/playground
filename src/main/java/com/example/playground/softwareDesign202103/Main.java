@@ -87,9 +87,9 @@ public class Main {
         PricingCategory category = null;
         try {
             category = PricingCategory.of(LocalDate.now());
+            System.out.println(category.price());
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(category.price());
     }
 }
